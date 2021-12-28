@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { spawnSync } from "child_process";
 import {
   CLIENT_SCRIPTS_TEMPLATE,
   LAYOUT_ROUTE_TEMPLATE,
@@ -7,21 +6,21 @@ import {
   TW_CONFIG_TEMPLATE,
   TW_CSS_TEMPLATE,
 } from "./templates";
+import { cmd } from "../utils";
+import figlet from "figlet";
+import kleur from "kleur";
 import fs from "fs";
 
-function cmd(command: string, args?: string[]) {
-  return spawnSync(command, args, {
-    stdio: "inherit",
-  });
+function setupSvelteKit() {
+  console.log(kleur.yellow("Initializing Sveltekit..."));
+  cmd("npm", ["init", "svelte@next", "client"]);
 }
 
-async function main() {
-  // Initialize SvelteKit
-  cmd("npm", ["init", "svelte@next", "client"]);
-
+function installDeps() {
   process.chdir("client");
 
-  // Install dependencies
+  kleur.yellow("Installing dependencies...");
+
   cmd("npm", ["install"]);
   cmd("npm", [
     "install",
@@ -32,28 +31,50 @@ async function main() {
     "concurrently",
     "cross-env",
   ]);
+}
 
-  // Initialize Tailwind CSS
+function setupTailwindCSS() {
+  console.log(kleur.yellow("Initializing Tailwind CSS..."));
+
   cmd("npx", ["tailwindcss", "init", "tailwind.config.cjs"]);
   cmd("touch", ["postcss.config.cjs"]);
   cmd("mkdir", ["src/styles"]);
   fs.writeFileSync("postcss.config.cjs", TW_POSTCSS_TEMPLATE);
   fs.writeFileSync("src/styles/tailwind.css", TW_CSS_TEMPLATE);
+}
 
-  // Update package.json scripts
+function updatePackageJSONScripts() {
+  console.log(kleur.yellow("Updating scripts..."));
+
   const json = JSON.parse(fs.readFileSync("package.json", "utf8"));
   fs.writeFileSync(
     "package.json",
     JSON.stringify({ ...json, scripts: CLIENT_SCRIPTS_TEMPLATE }, null, 2)
   );
+}
 
-  // Consume global css on layout route
+function finalizeConfig() {
+  console.log(kleur.yellow("Updating files..."));
   fs.writeFileSync("src/routes/__layout.svelte", LAYOUT_ROUTE_TEMPLATE);
   fs.writeFileSync("tailwind.config.cjs", TW_CONFIG_TEMPLATE);
+}
 
-  console.info("Initialized client!");
+async function main() {
+  figlet("anvil", (e, d) => {
+    if (d) {
+      console.log(d);
+    }
 
-  process.exit();
+    setupSvelteKit();
+    installDeps();
+    setupTailwindCSS();
+    updatePackageJSONScripts();
+    finalizeConfig();
+
+    console.log(kleur.green("Initialized client!"));
+
+    process.exit();
+  });
 }
 
 main();

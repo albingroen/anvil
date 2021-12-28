@@ -34,6 +34,7 @@ export const CLIENT_SCRIPTS_TEMPLATE = {
 
 export const TW_CONFIG_TEMPLATE = `module.exports = {
   content: ["./src/**/*.svelte"],
+  darkMode: "media",
   theme: {
     extend: {},
   },
