@@ -1,30 +1,26 @@
-# create-anvil-app
+# Anvil
 
-Generate a web project using the following technologies:
+## What is Anvil
 
-- Client
+A set of tools you can use when you want to bootstrap a fast, stable, and future-proof web application.
 
-  - [SvelteKit](https://kit.svelte.dev)
-  - [TypeScript](http://typescriptlang.org)
-  - [TailwindCSS](https://tailwindcss.com)
+## What does Anvil include?
 
-- Server
-  - [Node.js](https://nodejs.org)
-  - [TypeScript](http://typescriptlang.org)
-  - [Fastify](https://www.fastify.io)
-  - [Prisma](https://www.prisma.io)
+- [SvelteKit](https://kit.svelte.dev)
+  - Framework for building web apps
+- [Tailwind CSS](https://tailwindcss.com)
+  - Utility class based css
+- [TypeScript](http://typescriptlang.org)
+  - Type-safe JavaScript code
+- [Fastify](https://www.fastify.io)
+  - Tried & tested web server framework
+- [Prisma](https://www.prisma.io)
+  - Database ORM, and much more
 
-## Requirements
-
-- [Node.js](https://nodejs.org)
-- [npx](https://www.npmjs.com/package/npx)
+## How to use Anvil?
 
 ## Usage
 
-Create your project folder
-
-    mkdir my-app
-
-Move into the folder and run this command
+Anvil is just a generator, so all you have to do is run the generation script through npx.
 
     npx create-anvil-app
