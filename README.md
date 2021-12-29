@@ -7,7 +7,7 @@ A set of tools you can use when you want to bootstrap a fast, stable, and future
 - [SvelteKit](https://kit.svelte.dev)
   - Framework for building web apps
 - [Tailwind CSS](https://tailwindcss.com)
-  - Utility class based css
+  - Utility class-based CSS
 - [TypeScript](http://typescriptlang.org)
   - Type-safe JavaScript code
 - [Fastify](https://www.fastify.io)
