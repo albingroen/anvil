@@ -1,6 +1,6 @@
 {
-  "name": "anvil",
-  "version": "1.0.0",
+  "name": "create-anvil-app",
+  "version": "0.0.2",
   "main": "dist/script.js",
   "author": "Albin Groen",
   "license": "MIT",
@@ -8,8 +8,7 @@
     "build": "tsc",
     "dev": "tsc -w",
     "start": "node .",
-    "format": "prettier --write .",
-    "create-anvil-app": "./dist/client/setup.js && ./dist/server/setup.js"
+    "format": "prettier --write ."
   },
   "bin": {
     "create-anvil-app": "./dist/client/setup.js && ./dist/server/setup.js"
