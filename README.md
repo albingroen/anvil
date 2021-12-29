@@ -1,3 +1,5 @@
+<img width="250" src="https://res.cloudinary.com/albin-groen/image/upload/v1640783429/81-819002_anvil-true-temper-png-anvil-png-transparent-png_wc5wl1.png" />
+
 # create-anvil-app
 
 Generate a web project using the following technologies:
