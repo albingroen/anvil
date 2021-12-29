@@ -19,4 +19,4 @@ A set of tools you can use when you want to bootstrap a fast, stable, and future
 
 Anvil is just a generator, so all you have to do is run the generation script through npx.
 
-    npx create-anvil-app
+    npx create-anvil-app my-app
