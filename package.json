@@ -21,5 +21,11 @@
     "kleur": "^4.1.4",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": false
   }
 }

@@ -5,76 +5,83 @@ import {
   TW_POSTCSS_TEMPLATE,
   TW_CONFIG_TEMPLATE,
   TW_CSS_TEMPLATE,
-} from "./templates";
-import { cmd } from "../utils";
-import figlet from "figlet";
-import kleur from "kleur";
-import fs from "fs";
+  ENVIRONMENT_VARS_TEMPLATE,
+} from './templates'
+import { cmd, log } from '../utils'
+import figlet from 'figlet'
+import fs from 'fs'
 
 function setupSvelteKit() {
-  console.log(kleur.yellow("Initializing Sveltekit..."));
-  cmd("npm", ["init", "svelte@next", "client"]);
+  log('Initializing Sveltekit...', 'info')
+
+  cmd('npm', ['init', 'svelte@next', 'client'])
 }
 
 function installDeps() {
-  process.chdir("client");
+  log('Installing dependencies...', 'info')
 
-  kleur.yellow("Installing dependencies...");
+  process.chdir('client')
 
-  cmd("npm", ["install"]);
-  cmd("npm", [
-    "install",
-    "-D",
-    "autoprefixer",
-    "postcss-cli",
-    "tailwindcss",
-    "concurrently",
-    "cross-env",
-  ]);
+  cmd('npm', ['install'])
+  cmd('npm', [
+    'install',
+    '-D',
+    'autoprefixer',
+    'postcss-cli',
+    'tailwindcss',
+    'concurrently',
+    'cross-env',
+  ])
+}
+
+function setupEnvironmentVariables() {
+  log('Setting up environment variables', 'info')
+
+  fs.writeFileSync('.env', ENVIRONMENT_VARS_TEMPLATE)
 }
 
 function setupTailwindCSS() {
-  console.log(kleur.yellow("Initializing Tailwind CSS..."));
+  log('Initializing Tailwind CSS...', 'info')
 
-  cmd("npx", ["tailwindcss", "init", "tailwind.config.cjs"]);
-  cmd("touch", ["postcss.config.cjs"]);
-  cmd("mkdir", ["src/styles"]);
-  fs.writeFileSync("postcss.config.cjs", TW_POSTCSS_TEMPLATE);
-  fs.writeFileSync("src/styles/tailwind.css", TW_CSS_TEMPLATE);
+  cmd('npx', ['tailwindcss', 'init', 'tailwind.config.cjs'])
+  cmd('touch', ['postcss.config.cjs'])
+  cmd('mkdir', ['src/styles'])
+  fs.writeFileSync('postcss.config.cjs', TW_POSTCSS_TEMPLATE)
+  fs.writeFileSync('src/styles/tailwind.css', TW_CSS_TEMPLATE)
 }
 
 function updatePackageJSONScripts() {
-  console.log(kleur.yellow("Updating scripts..."));
+  log('Updating scripts...', 'info')
 
-  const json = JSON.parse(fs.readFileSync("package.json", "utf8"));
+  const json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
   fs.writeFileSync(
-    "package.json",
+    'package.json',
     JSON.stringify({ ...json, scripts: CLIENT_SCRIPTS_TEMPLATE }, null, 2)
-  );
+  )
 }
 
 function finalizeConfig() {
-  console.log(kleur.yellow("Updating files..."));
-  fs.writeFileSync("src/routes/__layout.svelte", LAYOUT_ROUTE_TEMPLATE);
-  fs.writeFileSync("tailwind.config.cjs", TW_CONFIG_TEMPLATE);
+  log('Updating files...', 'info')
+
+  fs.writeFileSync('src/routes/__layout.svelte', LAYOUT_ROUTE_TEMPLATE)
+  fs.writeFileSync('tailwind.config.cjs', TW_CONFIG_TEMPLATE)
 }
 
 async function main() {
-  figlet("anvil", (e, d) => {
-    if (d) {
-      console.log(d);
-    }
+  figlet('anvil', (_, d) => {
+    if (d) console.log(d)
 
-    setupSvelteKit();
-    installDeps();
-    setupTailwindCSS();
-    updatePackageJSONScripts();
-    finalizeConfig();
+    setupSvelteKit()
+    installDeps()
+    setupEnvironmentVariables()
+    setupTailwindCSS()
+    updatePackageJSONScripts()
+    finalizeConfig()
 
-    console.log(kleur.green("Initialized client!"));
+    log('Initialized client!', 'success')
 
-    process.exit();
-  });
+    process.exit()
+  })
 }
 
-main();
+main()
