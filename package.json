@@ -1,8 +1,9 @@
 {
   "name": "create-anvil-app",
+  "description": "Generates a Anvil web application template",
   "version": "0.1.0",
   "author": "Albin Groen",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
@@ -22,6 +23,5 @@
     "useTabs": false,
     "tabWidth": 2,
     "semi": false
-  },
-  "dependencies": {}
+  }
 }
