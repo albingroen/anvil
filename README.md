@@ -1,7 +1,5 @@
 # Anvil
 
-## What is Anvil
-
 A set of tools you can use when you want to bootstrap a fast, stable, and future-proof web application.
 
 ## What does Anvil include?
@@ -18,8 +16,6 @@ A set of tools you can use when you want to bootstrap a fast, stable, and future
   - Database ORM, and much more
 
 ## How to use Anvil?
-
-## Usage
 
 Anvil is just a generator, so all you have to do is run the generation script through npx.
 
