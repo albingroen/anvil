@@ -1,19 +1,13 @@
 import { spawnSync } from 'child_process'
-import kleur from 'kleur'
 
-export function cmd(command: string, args?: string[]) {
+export function cmd(command: string, args?: string[], stdio?: boolean) {
   return spawnSync(command, args, {
-    stdio: 'inherit',
+    stdio: stdio ? 'inherit' : undefined,
   })
 }
 
-export function log(message: string, type: 'success' | 'info') {
-  switch (type) {
-    case 'success':
-      return console.log(kleur.green(message))
-    default:
-      return console.log(kleur.yellow(message))
-  }
+export function log(message: string, _: 'success' | 'info') {
+  console.log(message)
 }
 
 export function removeJsonComments(jsonString: string): string {

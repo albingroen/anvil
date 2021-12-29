@@ -8,13 +8,12 @@ import {
   ENVIRONMENT_VARS_TEMPLATE,
 } from './templates'
 import { cmd, log } from '../utils'
-import figlet from 'figlet'
 import fs from 'fs'
 
 function setupSvelteKit() {
   log('Initializing Sveltekit...', 'info')
 
-  cmd('npm', ['init', 'svelte@next', 'client'])
+  cmd('npm', ['init', 'svelte@next', 'client'], true)
 }
 
 function installDeps() {
@@ -67,21 +66,13 @@ function finalizeConfig() {
   fs.writeFileSync('tailwind.config.cjs', TW_CONFIG_TEMPLATE)
 }
 
-async function main() {
-  figlet('anvil', (_, d) => {
-    if (d) console.log(d)
+export default async function main() {
+  setupSvelteKit()
+  installDeps()
+  setupEnvironmentVariables()
+  setupTailwindCSS()
+  updatePackageJSONScripts()
+  finalizeConfig()
 
-    setupSvelteKit()
-    installDeps()
-    setupEnvironmentVariables()
-    setupTailwindCSS()
-    updatePackageJSONScripts()
-    finalizeConfig()
-
-    log('Initialized client!', 'success')
-
-    process.exit()
-  })
+  log('Initialized client!', 'success')
 }
-
-main()

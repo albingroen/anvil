@@ -93,7 +93,7 @@ function setupIndexFile() {
   fs.writeFileSync('index.ts', FASTIFY_TEMPLATE)
 }
 
-async function main() {
+export default async function main() {
   setupProject()
   installDeps()
   setupPrisma()
@@ -102,6 +102,6 @@ async function main() {
   setupIndexFile()
 
   log('Initialized server!', 'success')
-}
 
-main()
+  process.exit()
+}

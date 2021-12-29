@@ -1,18 +1,14 @@
 {
   "name": "create-anvil-app",
-  "version": "0.0.2",
-  "main": "dist/script.js",
+  "version": "0.1.0",
   "author": "Albin Groen",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "start": "node .",
     "format": "prettier --write ."
   },
-  "bin": {
-    "create-anvil-app": "./dist/client/setup.js && ./dist/server/setup.js"
-  },
+  "bin": "./dist/index.js",
   "devDependencies": {
     "@types/figlet": "^1.5.4",
     "@types/node": "^17.0.5",
@@ -26,5 +22,6 @@
     "useTabs": false,
     "tabWidth": 2,
     "semi": false
-  }
+  },
+  "dependencies": {}
 }
