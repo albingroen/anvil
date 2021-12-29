@@ -1,6 +1,6 @@
 # Anvil
 
-A set of tools you can use when you want to bootstrap a fast, stable, and future-proof web application.
+A set of tools you can use to bootstrap a fast, stable, and future-proof web application.
 
 ## What does Anvil include?
 
