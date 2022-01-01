@@ -20,3 +20,35 @@ A set of tools you can use to bootstrap a fast, stable, and future-proof web app
 Anvil is just a generator, so all you have to do is run the generation script through npx.
 
     npx create-anvil-app my-app
+
+### Output
+
+```
+├── client
+│   ├── node_modules
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.cjs
+│   ├── src
+│   │   ├── app.html
+│   │   ├── global.d.ts
+│   │   ├── routes
+│   │   │   ├── __layout.svelte
+│   │   │   └── index.svelte
+│   │   └── styles
+│   │       └── tailwind.css
+│   ├── static
+│   │   └── favicon.png
+│   ├── svelte.config.js
+│   ├── tailwind.config.cjs
+│   └── tsconfig.json
+└── server
+    ├── node_modules
+    ├── index.ts
+    ├── package-lock.json
+    ├── package.json
+    ├── prisma
+    │   └── schema.prisma
+    └── tsconfig.json
+```
