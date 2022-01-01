@@ -1,7 +1,7 @@
 {
   "name": "create-anvil-app",
   "description": "Generates a Anvil web application template",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "Albin Groen",
   "license": "UNLICENSED",
   "scripts": {
